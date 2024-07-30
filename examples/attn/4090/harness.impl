@@ -8,7 +8,11 @@ constexpr int ATTN_N = 4096;
 constexpr int ATTN_D = 64; // hardcoded into this kernel
 constexpr int ITER   = 10;
 
+#ifdef KITTENS_A100
+#define BLOCK_SIZE (16*NUM_WORKERS)
+#else
 #define BLOCK_SIZE (32*NUM_WORKERS)
+#endif
 
 #define CudaCheckError()    __cudaCheckError( __FILE__, __LINE__ )
 inline void __cudaCheckError( const char *file, const int line ) {
