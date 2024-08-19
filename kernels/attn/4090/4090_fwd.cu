@@ -2,7 +2,7 @@
 
  // this kernel is more of an example kernel to show some TK programming models, rather than a kernel we think you should put into production, though it is pretty fast!
 
-#define NUM_WORKERS 16 // This kernel uses 16 workers in parallel per block, to help issue instructions more quickly.
+#define NUM_WORKERS 8 // This kernel uses 16 workers in parallel per block, to help issue instructions more quickly.
 
 using namespace kittens; // this kernel only handles headdim=64 for simplicity. Also n should be a multiple of 256 here.
 __global__ void attend_ker64(int n, const bf16* __restrict__ __q__, const bf16* __restrict__ __k__, const bf16* __restrict__ __v__, bf16* __o__) {
