@@ -1,4 +1,4 @@
-#include "../../../src/kittens.cuh"
+#include "../../../include/kittens.cuh"
 
  // this kernel is more of an example kernel to show some TK programming models, rather than a kernel we think you should put into production, though it is pretty fast!
 
