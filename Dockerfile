@@ -1,5 +1,12 @@
-FROM nvcr.io/nvidia/cuda:12.5.1-cudnn-devel-rockylinux9
-RUN dnf upgrade -y && dnf -y install gcc-toolset-13 git python3
-WORKDIR /usr/src
+FROM fedora:39
+
+RUN dnf -y install 'dnf-command(config-manager)'
+RUN dnf config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/fedora39/x86_64/cuda-fedora39.repo
+RUN dnf clean all
+RUN dnf -y upgrade
+RUN dnf -y install cuda-toolkit-12-6 @development-tools
+RUN dnf -y module install nvidia-driver:open-dkms
+
+WORKDIR /usr/src/tk
 COPY . .
 ENTRYPOINT ["/bin/bash"]
